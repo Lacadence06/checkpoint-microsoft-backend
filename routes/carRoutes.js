@@ -32,6 +32,14 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  const updated = await Car.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true }
+  );
+  res.json(updated);
+});
 
 // DELETE car
 router.delete("/:id", async (req, res) => {
